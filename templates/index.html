@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Dynamic Ride Price Prediction</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+
+<img src="{{ url_for('static', filename='images/bike.jpeg') }}">
+
+<h1>Dynamic Ride Price Prediction</h1>
+
+<p>Predict the ride fare based on customer and ride details.</p>
+
+</div>
+
+<form action="/predict" method="POST">
+
+<div class="grid">
+
+<input type="number"
+name="Number_of_Riders"
+placeholder="Number of Riders"
+required>
+
+<input type="number"
+name="Number_of_Drivers"
+placeholder="Number of Drivers"
+required>
+
+<select name="Location_Category">
+
+<option>Urban</option>
+
+<option>Suburban</option>
+
+<option>Rural</option>
+
+</select>
+
+<select name="Customer_Loyalty_Status">
+
+<option>Regular</option>
+
+<option>Silver</option>
+
+<option>Gold</option>
+
+</select>
+
+<input type="number"
+name="Number_of_Past_Rides"
+placeholder="Number of Past Rides"
+required>
+
+<input type="number"
+step="0.01"
+min="3.5"
+max="5"
+name="Average_Ratings"
+placeholder="Average Ratings"
+required>
+
+<select name="Time_of_Booking">
+
+<option>Morning</option>
+
+<option>Afternoon</option>
+
+<option>Evening</option>
+
+<option>Night</option>
+
+</select>
+
+<select name="Vehicle_Type">
+
+<option>Economy</option>
+
+<option>Premium</option>
+
+</select>
+
+<input type="number"
+name="Expected_Ride_Duration"
+placeholder="Ride Duration (minutes)"
+required>
+
+</div>
+
+<button type="submit">
+
+Predict Ride Price
+
+</button>
+
+</form>
+
+{% if prediction %}
+
+<div class="prediction">
+
+{{ prediction }}
+
+</div>
+
+{% endif %}
+
+</div>
+
+</body>
+
+</html>
